@@ -1,22 +1,19 @@
 let button = document.getElementById("convert-btn")
 let values =  document.getElementById("text")
-button.addEventListener('click', () => {camelCase ();
-pascalCase();
-snakeCase();
-screamingSnakeCase();
-kebabCase();
-screamingKebabCase();})
-
-
-
+let camelCaseEl = document.getElementById('camel-case')
+let pascalCaseEl = document.getElementById('pascal-case')
+let snakeCaseEl =   document.getElementById('snake-case')
+let screamingSnakeCaseEl = document.getElementById('screaming-snake-case')
+let kebabCaseEl =  document.getElementById('kebab-case')
+let screamingKebabCaseEl = document.getElementById('screaming-kebab-case')
 function camelCase (){
-  console.log(values)
+    console.log(values.value)
 let allValues = values.value.split(" ").filter((el)=> {return el !== " "})
 let newText = allValues[0].toLowerCase()
 for (value of allValues.slice(1)){
  newText = newText + value[0].toUpperCase() + value.slice(1)
 }
-document.getElementById('camel-case').innerText = newText
+camelCaseEl.textContent = newText
 }
 
 function pascalCase (){
@@ -25,7 +22,7 @@ let newText = allValues[0].toUpperCase()
 for (value of allValues.slice(1)){
     newText = newText + value[0].toUpperCase()+value.slice(1)
 }
-document.getElementById('pascal-case').innerText = newText
+pascalCaseEl.textContent = newText
 }
 
 function snakeCase (){
@@ -35,34 +32,27 @@ function snakeCase (){
     for (value of allValues.slice(1)){
         newText = newText + "_"+ value
     }
-    document.getElementById('snake-case').innerText = newText
+    snakeCaseEl.textContent = newText
 }
 
 
 function screamingSnakeCase (){
-    let allValues = values.value.split(" ").filter((el)=> {return el !== " "})
-    let newText = allValues[0].toUpperCase()
-    for (value of allValues.slice(1)){
-        newText = newText + "_"+ value.toUpperCase()
-    }
-    document.getElementById('screaming-snake-case').innerText = newText
+    screamingSnakeCaseEl.textContent = values.value.split(" ").filter((el)=> {return el !== " "}).join("_").toUpperCase()
 }
 
 function kebabCase (){
 
-    let allValues = values.value.split(" ").filter((el)=> {return el !== " "})
-    let newText = allValues[0].toLowerCase()
-    for (value of allValues.slice(1)){
-        newText = newText + "-"+ value.toLowerCase()
-    }
-    document.getElementById('kebab-case').innerText = newText
+    kebabCaseEl.textContent = values.value.split(" ").filter((el)=> {return el !== " "}).join("-").toLowerCase()
 }
 
 function screamingKebabCase (){
-    let allValues = values.value.split(" ").filter((el)=> {return el !== " "})
-    let newText = allValues[0].toUpperCase()
-    for (value of allValues.slice(1)){
-        newText = newText + "-"+ value.toUpperCase()
-    }
-    document.getElementById('screaming-kebab-case').innerText = newText
+    screamingKebabCaseEl.textContent = values.value.split(" ").filter((el)=> {return el !== " "}).join("-").toUpperCase()
 }
+
+button.addEventListener('click', () => {
+    camelCase ();
+    pascalCase();
+    snakeCase();
+    screamingSnakeCase();
+    kebabCase();
+    screamingKebabCase();})
